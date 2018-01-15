@@ -2,10 +2,10 @@
   <mat-card-header>
     <mat-card-title>Hello! What is your name?</mat-card-title>
   </mat-card-header>
-  <form class="home-form" novalidate #formRef="ngForm">
+  <form (ngSubmit)="onSubmit()">
     <mat-card-content>
         <mat-form-field class="full-width">
-          <input matInput autofocus required>
+          <input matInput name="name" autofocus required>
         </mat-form-field>
     </mat-card-content>
     <mat-card-actions class="text-right">
