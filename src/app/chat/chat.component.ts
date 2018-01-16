@@ -13,7 +13,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   chats: Array<Chat>;
   private routeSubscription: ISubscription;
   private chatSubscription: ISubscription;
-  private name: string;
+  private name = 'John Doe';
 
   constructor(
     private chatService: ChatService,
@@ -23,7 +23,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.routeSubscription = this.route.queryParamMap
       .subscribe((params: ParamMap) =>
-        this.name = params.get('name'));
+          this.name = params.get('name') || this.name);
   }
 
   ngOnDestroy() {

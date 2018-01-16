@@ -8,7 +8,7 @@ const HEADER = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }
 
 @Injectable()
 export class ChatService {
-  private readonly URL = 'http://messages.getsandbox.com/message';
+  private readonly URL = '//messages.getsandbox.com/message';
 
   constructor(protected httpClient: HttpClient) {}
 

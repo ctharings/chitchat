@@ -9,9 +9,9 @@
     </div>
   </mat-card-content>
 
-  <form class="chat-form">
+  <form #formRef="ngForm" (ngSubmit)="sendChat({ name: name, message: message })">
     <mat-form-field>
-      <textarea matInput placeholder="Message" required></textarea>
+      <textarea matInput [(ngModel)]="message" name="message" placeholder="Message" required></textarea>
     </mat-form-field>
 
     <button mat-button>Send</button>
