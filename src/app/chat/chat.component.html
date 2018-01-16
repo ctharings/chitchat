@@ -4,12 +4,14 @@
   </mat-card-header>
 
   <mat-card-content>
-    <div *ngFor="let chat of chats">
-      <p>{{chat.message}}</p>
+    <div class="dialogue-container">
+      <p *ngFor="let chat of chats">
+        {{chat.name}}: {{chat.message}}
+      </p>
     </div>
   </mat-card-content>
 
-  <form #formRef="ngForm" (ngSubmit)="sendChat({ name: name, message: message })">
+  <form #formRef="ngForm" (ngSubmit)="sendChat()">
     <mat-form-field>
       <textarea matInput [(ngModel)]="message" name="message" placeholder="Message" required></textarea>
     </mat-form-field>

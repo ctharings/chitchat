@@ -10,10 +10,11 @@ import { ISubscription } from 'rxjs/Subscription';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit, OnDestroy {
-  chats: Array<Chat>;
+  chats: Array<Chat> = [];
+  name = 'John Doe';
+  message = '';
   private routeSubscription: ISubscription;
   private chatSubscription: ISubscription;
-  private name = 'John Doe';
 
   constructor(
     private chatService: ChatService,
@@ -31,11 +32,13 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatSubscription.unsubscribe();
   }
 
-  sendChat(chat: Chat) {
+  sendChat(message) {
+    this.chats.push({ name: this.name, message: this.message });
+    const chat = { name: 'Echo Bot', message: this.message};
     this.chatSubscription = this.chatService.sendChat(chat)
       .subscribe(responseChat => {
-        if (chat.message) {
-          this.pushChat(responseChat);
+        if (responseChat) {
+          this.pushChat(Object.assign(chat, responseChat));
         }
       });
   }
